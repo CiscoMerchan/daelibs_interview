@@ -29,13 +29,13 @@ def day_of_week_average_count(request):
         average_counts = SensorEvent.objects.filter(event_datetime__range=[start_date, end_date]).values('sensor__id',
                                                                                                'sensor__name').annotate(
             # Calculate average counts for each day of the week using Django's Avg function and filters
-            mon_avg_count=Avg('id', filter=Q(event_datetime__week_day=2)),
-            tue_avg_count=Avg('id', filter=Q(event_datetime__week_day=3)),
-            wed_avg_count=Avg('id', filter=Q(event_datetime__week_day=4)),
-            thu_avg_count=Avg('id', filter=Q(event_datetime__week_day=5)),
-            fri_avg_count=Avg('id', filter=Q(event_datetime__week_day=6)),
-            sat_avg_count=Avg('id', filter=Q(event_datetime__week_day=7)),
-            sun_avg_count=Avg('id', filter=Q(event_datetime__week_day=1)),
+            mon_avg_count=(Avg('id', filter=Q(event_datetime__week_day=2)), 2),
+            tue_avg_count=(Avg('id', filter=Q(event_datetime__week_day=3)), 2),
+            wed_avg_count=(Avg('id', filter=Q(event_datetime__week_day=4)), 2),
+            thu_avg_count=(Avg('id', filter=Q(event_datetime__week_day=5)), 2),
+            fri_avg_count=(Avg('id', filter=Q(event_datetime__week_day=6)), 2),
+            sat_avg_count=(Avg('id', filter=Q(event_datetime__week_day=7)), 2),
+            sun_avg_count=(Avg('id', filter=Q(event_datetime__week_day=1)), 2),
         )
 
         # Return the results in the desired JSON format as the API response
