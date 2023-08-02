@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'main',
     # API serializer
     'rest_framework',
+    #App that handle the traffic_api
+    'traffic_api',
 ]
 
 MIDDLEWARE = [
